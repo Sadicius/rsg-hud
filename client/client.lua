@@ -128,7 +128,7 @@ local FliesSpawn = function (cleanData)
                 Citizen.Wait(0)
             end
         end
-        -- need filesspawned?
+        -- need filesspawned? -- 2do fliesspawned
         -- if not filesspawned and Citizen.InvokeNative(0x65BB72F29138F5D6, joaat(current_ptfx_dictionary)) then  -- HasNamedPtfxAssetLoaded
         if Citizen.InvokeNative(0x65BB72F29138F5D6, joaat(current_ptfx_dictionary)) then  -- HasNamedPtfxAssetLoaded
             Citizen.InvokeNative(0xA10DB07FC234DD12, current_ptfx_dictionary) -- UseParticleFxAsset
