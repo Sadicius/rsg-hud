@@ -27,8 +27,19 @@
             <p v-if="showBank"><span id="sign">$&nbsp;</span><span id="bank">{{(bank)}}</span></p>
                 </transition>
             </div>
+            
+            <div id="money-goldcoin">
+                <transition name="slide-fade">
+                    <p v-if="showGoldcoin"><span id="sign">$&nbsp;</span><span id="goldcoin">{{(goldcoin)}}</span></p>
+                </transition>
+            </div>
+            <div id="money-experience">
+                <transition name="slide-fade">
+                    <p v-if="showExperience"><span id="sign">$&nbsp;</span><span id="experience">{{(experience)}}</span></p>
+                </transition>
+            </div>
             <div id="money-change" v-if="showUpdate">
-        <p v-if="plus" id="money"><span id="plus">+&nbsp;</span><span id="money">{{(amount)}}</span></p>
+                <p v-if="plus" id="money"><span id="plus">+&nbsp;</span><span id="money">{{(amount)}}</span></p>
                 <p v-else-if="minus" id="minus"><span id="minus">-&nbsp;</span><span id="money">{{(amount)}}</span></p>
             </div>
         </div>
@@ -49,10 +60,11 @@
                     <div v-if="showTemp">
                         <q-circular-progress class="progress" show-value :value="temp" size="3.75vh" :thickness="0.22" color="white" track-color="grey-8" center-color="gray-10">
                           <template v-slot:default>
-                            <div class="text-white" style="font-family: crock">{{ temp }}</div>
+                            <div class="text-white" style="font-family: 'Roboto', sans-serif !important;">{{ temp }}</div>
                           </template>
                         </q-circular-progress>
                     </div>
+
                     <div v-if="showHealth">
                         <q-circular-progress class="progress" show-value :value="health" size="3.75vh" :thickness="0.22" color="white" track-color="black-9" center-color="gray-10">
                         <q-icon name="fas fa-heartbeat" size="19px" :style="{color: showHealthColor}" />

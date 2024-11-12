@@ -15,9 +15,9 @@ client_scripts {
 }
 
 server_scripts {
+    '@oxmysql/lib/MySQL.lua',
     'server/server.lua',
     'server/versionchecker.lua',
-    '@oxmysql/lib/MySQL.lua',
 }
 
 dependencies {
@@ -29,10 +29,10 @@ dependencies {
 ui_page 'html/index.html'
 
 files {
+    'locales/*.json',
     'html/index.html',
     'html/styles.css',
-    'html/app.js',
-    'locales/*.json'
+    'html/app.js'
 }
 
 lua54 'yes'

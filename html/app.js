@@ -6,12 +6,16 @@ const moneyHud = Vue.createApp({
             cash: 0,
             bloodmoney: 0,
             bank: 0,
+            goldcoin: 0,
+            experience: 0,
             amount: 0,
             plus: false,
             minus: false,
             showCash: false,
             showBloodmoney: false,
             showBank: false,
+            showGoldcoin: false,
+            showExperience: false,
             showUpdate: false
         }
     },
@@ -49,13 +53,19 @@ const moneyHud = Vue.createApp({
             this.showCash = true;
             this.showBloodmoney = true;
             this.showBank = true;
+            this.showGoldcoin = true;
+            this.showExperience = true;
             this.cash = data.cash;
             this.bloodmoney = data.bloodmoney;
             this.bank = data.bank;
+            this.goldcoin = data.goldcoin;
+            this.experience = data.experience;
         },
         update(data) {
             this.showUpdate = true;
             this.amount = data.amount;
+            this.experience = data.experience;
+            this.goldcoin = data.goldcoin;
             this.bank = data.bank;
             this.bloodmoney = data.bloodmoney;
             this.cash = data.cash;
@@ -100,6 +110,32 @@ const moneyHud = Vue.createApp({
                     setTimeout(() => this.showBank = false, 2000)
                 }
             }
+            if (data.type === 'goldcoin') {
+                if (data.minus) {
+                    this.showGoldcoin = true;
+                    this.minus = true;
+                    setTimeout(() => this.showUpdate = false, 1000)
+                    setTimeout(() => this.showGoldcoin = false, 2000)
+                } else {
+                    this.showGoldcoin = true;
+                    this.plus = true;
+                    setTimeout(() => this.showUpdate = false, 1000)
+                    setTimeout(() => this.showGoldcoin = false, 2000)
+                }
+            }
+            if (data.type === 'experience') {
+                if (data.minus) {
+                    this.showExperience = true;
+                    this.minus = true;
+                    setTimeout(() => this.showUpdate = false, 1000)
+                    setTimeout(() => this.showExperience = false, 2000)
+                } else {
+                    this.showExperience = true;
+                    this.plus = true;
+                    setTimeout(() => this.showUpdate = false, 1000)
+                    setTimeout(() => this.showExperience = false, 2000)
+                }
+            }
         },
         showAccounts(data) {
             if (data.type === 'cash' && !this.showCash) {
@@ -116,6 +152,16 @@ const moneyHud = Vue.createApp({
                 this.showBank = true;
                 this.bank = data.bank;
                 setTimeout(() => this.showBank = false, 3500);
+            }
+            else if (data.type === 'goldcoin' && !this.showGoldcoin) {
+                this.showGoldcoink = true;
+                this.goldcoin = data.goldcoin;
+                setTimeout(() => this.showGoldcoin = false, 3500);
+            }
+            else if (data.type === 'experience' && !this.showExperience) {
+                this.showExperience = true;
+                this.experience = data.experience;
+                setTimeout(() => this.showExperience = false, 3500);
             }
         }
     }
@@ -283,7 +329,7 @@ const playerHud = {
                 this.showYouHaveMailColor = "#FFD700";
             } else {
                 this.showYouHaveMailColor = "#FFFFFF";
-            }
+            }            
             if (data.outlawstatus >= 100) {
                 this.showoutlawstatus = true;
             } else {
